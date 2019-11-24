@@ -173,3 +173,65 @@ character_event = {
 		set_character_flag = ask_for_ancient_mark_cooldown_flag
 	}
 }
+
+#event upon foundation of Ebon Blade
+narrative_event = {
+	WCCSO.10200
+	title = EVTTITLE_WCDAC_3950
+	desc = EVTDESC_WCDAC_3950
+	picture = GFX_evt_secret_ceremony
+
+	is_triggered_only = yes
+
+	major = yes
+	major_trigger = {
+		ai = no
+	}
+	# show_root = yes
+	hide_from = yes
+
+	option = {
+		trigger = {
+			NOR = {
+				true_religion = death_god
+				is_aggressive_trigger = yes
+			}
+			trait = zealous
+		}
+		name = EVTOPTA_WCDAC_3950_zealous
+	}
+	option = {
+		trigger = {
+			NOR = {
+				true_religion = death_god
+				is_aggressive_trigger = yes
+			}
+			trait = cynical
+		}
+		name = EVTOPTA_WCDAC_3950_cynical
+	}
+	option = {
+		trigger = {
+			NOR = {
+				true_religion = death_god
+				is_aggressive_trigger = yes
+			}
+			NOR = {
+				trait = zealous
+				trait = cynical
+			}
+		}
+		name = EVTOPTA_WCDAC_3950_normal
+	}
+	option = {
+		trigger = { true_religion = death_god }
+		name = DEATH_IS_COMING
+	}
+	option = {
+		trigger = {
+			NOT = { true_religion = death_god }
+			is_aggressive_trigger = yes
+		}
+		name = FOOLS
+	}
+}

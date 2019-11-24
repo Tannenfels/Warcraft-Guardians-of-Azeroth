@@ -3957,3 +3957,66 @@ settlement_decisions = {
 	}
 	# corrupt_world_tree and burn_world_tree are in wc_realm_decisions.txt
 }
+
+#########################################################
+# 			Death Knight - form the Ebon Blade			#
+#########################################################
+decisions = {
+    found_ebon_blade_society = {
+		is_high_prio = yes
+
+		ai_check_interval = 36
+
+		only_playable = yes
+
+		potential = {
+			has_dlc = "Mystics"
+			is_untouchable_trigger = no
+
+			is_adult = yes
+			is_incapable = no
+			prisoner = no
+
+			NOT = { ebon_blade = { society_is_active = yes } }
+
+
+			is_death_knight_class_trigger = yes
+			trait = being_undead
+			NOT = { true_religion = death_god }
+			has_ebon_blade_prerequisites = yes
+		}
+
+		allow = {
+			is_inaccessible_trigger = no
+
+			trigger_if = {
+				limit = { ai = no }
+				piety = 250
+			}
+			is_in_society = no
+		}
+
+		effect = {
+			join_society_ebon_blade_effect = yes
+			set_society_grandmaster = yes # Set character as Grand Master
+			add_society_currency_massive_effect = yes # Give the Grand Master a start-up capital to induct members
+
+			hidden_effect = {
+				# Spawns first members
+				any_playable_ruler = {
+					limit = { is_death_knight_class_trigger = yes }
+					character_event = { id = MNM.10030 }
+				}
+				character_event = { id = WCDAC.3950 }
+			}
+		}
+
+		revoke_allowed = {
+			always = no
+		}
+
+		ai_will_do = {
+			factor = 1
+		}
+	}
+}

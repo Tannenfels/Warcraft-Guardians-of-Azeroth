@@ -307,6 +307,9 @@ join_society_cult_of_the_damned_effect = {
 	}
 	join_society = cult_of_the_damned
 }
+join_society_ebon_blade_effect = {
+	join_society = ebon_blade
+}
 join_society_shadow_council_effect = {
 	if = {
 		limit = {
